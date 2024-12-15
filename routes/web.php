@@ -6,6 +6,7 @@ use App\Http\Controllers\backend\CostController;
  use App\Http\Controllers\backend\CourierDetailsController;
 use App\Http\Controllers\backend\StaffController;
 use App\Http\Controllers\backend\UnitController;
+use App\Http\Controllers\frontend\FrontendController;
 use App\Http\Controllers\ManagerController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
@@ -21,9 +22,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('welcome');
+// });
 
 
 
@@ -140,6 +141,22 @@ Route::get('/deliverysuccess', [CourierDetailsController::class, 'DeliverySucces
 
 
 });
+
+
+
+//Frontend 
+Route::get('/', [FrontendController::class, 'index'])->name('index');
+Route::get('all-branch', [FrontendController::class, 'allBranch'])->name('all.branch');
+Route::get('all-service', [FrontendController::class, 'allService'])->name('all.service');
+Route::get('about-us', [FrontendController::class, 'aboutUs'])->name('about.us');
+Route::get('privacy-policy', [FrontendController::class, 'privacyPolicy'])->name('privacy.policy');
+Route::get('terms-of-service', [FrontendController::class, 'termsOfService'])->name('terms.of.service');
+
+Route::get('contact-us', [FrontendController::class, 'contactUs'])->name('contact.us');
+Route::post('contact-message-send', [FrontendController::class, 'contactMessageSend'])->name('contact.message.send');
+
+Route::get('check-status', [FrontendController::class, 'checkStatus'])->name('check.status');
+Route::post('check-status-result', [FrontendController::class, 'checkStatusResult'])->name('check.status.result');
 
 
 
